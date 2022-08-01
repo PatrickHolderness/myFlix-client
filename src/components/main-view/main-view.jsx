@@ -54,7 +54,8 @@ setSelectedMovie(newSelectedMovie) {
   }
     render() {
         const { movies, selectedMovie, user, registered } = this.state;
-//If no user, the loginview is rendered. If a user is logged in, details are passed as prop to loginview
+    //If no user, the loginview is rendered. If a user is logged in, details are passed as prop to loginview
+        if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
         if (!registered) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>);
 
         if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
