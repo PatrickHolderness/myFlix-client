@@ -1,20 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-<<<<<<< Updated upstream
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
-export class MainView extends React.Component {
-constructor(){
-    super();
-    this.state = {
-        movies: [],
-        selectedMovie: null
-    };
-}
-
-componentDidMount(){
-    axios.get('https://movie-info-online.herokuapp.com/movies')
-=======
 import { Container, Col, Row, Navbar, Nav } from 'react-bootstrap';
 
 import { LoginView } from '..//login-view/login-view';
@@ -38,7 +23,6 @@ export class MainView extends React.Component {
 componentDidMount()
 {
     axios.get('https://movie-info-online.herokuapp.com/movies',)
->>>>>>> Stashed changes
     .then(response => {
         this.setState({
             movies: response.data
@@ -54,12 +38,6 @@ setSelectedMovie(newSelectedMovie) {
       selectedMovie: newSelectedMovie
         });
     }
-<<<<<<< Updated upstream
-    render() {
-        const { movies, selectedMovie } = this.state;
-
-        if (selectedMovie) return <MovieView movie={selectedMovie} />;
-=======
 
     //when a user successfully registers
   onRegistration(registered) {
@@ -78,24 +56,13 @@ setSelectedMovie(newSelectedMovie) {
         const { movies, selectedMovie, user, registered } = this.state;
 //If no user, the loginview is rendered. If a user is logged in, details are passed as prop to loginview
         if (!registered) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>);
->>>>>>> Stashed changes
 
         if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
 
-<<<<<<< Updated upstream
-        return (
-            <div className="main-view">
-                {movies.map(movie => <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />)}
-            </div>
-        );
-    } render() {
-        const { movies, selectedMovie } = this.state;
-=======
         if (selectedMovie) return (<MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie);
             }}
           />
         );
->>>>>>> Stashed changes
 
         if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
 
