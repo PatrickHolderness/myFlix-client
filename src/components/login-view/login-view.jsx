@@ -5,6 +5,7 @@ import { Form, Button } from "react-bootstrap";
 import "./login-view.scss";
 
 //User login - requiring username and password
+
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -14,12 +15,6 @@ export function LoginView(props) {
     console.log(username, password);
     props.onLoggedIn(username);
   };
-
-  const handleRegister = (e) => {
-      e.preventDefault()
-      props.onRegister(true)
-  }
-
 
   return (
     <Form>
