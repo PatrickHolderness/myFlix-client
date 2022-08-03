@@ -2,60 +2,83 @@ import React from 'react';
 import axios from 'axios';
 import { Container, Col, Row, Navbar, Nav } from 'react-bootstrap';
 
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+
+import { DirectorView } from '..director-view/director-view';
+import { GenreView } from '../genre-view/genre-view';
 import { LoginView } from '..//login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { NavBar } from '../nav-bar/nav-bar';
+import { ProfileView } from '../profile-view/profile-view';
 import { RegistrationView } from '../registration-view/registration-view'
 
 import './main-view.scss';
 
-export class MainView extends React.Component {
+export default class MainView extends React.Component {
     constructor(){
         super();
          this.state = {
              movies: [],
              selectedMovie: null,
-             user: null,
-             registered: null,
+             username: null,
+             favoriteMovies: null,
     };
 }
 
 componentDidMount()
 {
-    axios.get('https://movie-info-online.herokuapp.com/movies',)
+  let accessToken = localStorage.getItem('token');
+  if (accessToken !== null) {
+    this.setState({
+      user: localStorage.getItem('user'),
+    });
+  }
+  this.getMovies(accessToken);
+}
+
+getMovies(token) {
+  axios.get('https://movie-info-online.herokuapp.com/movies', {
+    headers: { Authorization: `Bearer ${token}` }
+  })
     .then(response => {
-        this.setState({
-            movies: response.data
-        });
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
     })
-    .catch(error => {
-        console.log(error);
+    .catch(function (error) {
+      console.log(error);
     });
 }
 
-setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie
-        });
-    }
 
-    //when a user successfully registers
-  onRegistration(registered) {
-    this.setState({
-      registered,
-    });
-  }
+
 
      //set state to current user
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user,
+      user: authData.user.Username
+    });
+
+    localStorage.setItem('token', authData.Token)
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
     });
   }
     render() {
-        const { movies, selectedMovie, user, registered } = this.state;
+        const { movies, user, } = this.state;
     //If no user, the loginview is rendered. If a user is logged in, details are passed as prop to loginview
         if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+
         if (!registered) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>);
 
         if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
@@ -112,4 +135,3 @@ setSelectedMovie(newSelectedMovie) {
     );
   }
 }
-export default MainView;
