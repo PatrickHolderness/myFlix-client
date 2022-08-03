@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 import propTypes from "prop-types";
 import { Form, Button } from "react-bootstrap";
 
@@ -9,11 +10,47 @@ import "./login-view.scss";
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+//Hook for each input
+const [usernameErr, setUsernameErr] = useState('');
+const [passwordErr, setPasswordErr] = useState('');
+
+    // Validate user inputs
+    const validate = () => {
+      let isReq = true;
+      if (!username) {
+        setUsernameErr('Username Required');
+        isReq = false;
+      } else if (username.length < 2) {
+        setUsernameErr('Username must be at least 5 characters long');
+        isReq = false;
+      }
+      if (!password) {
+        setPasswordErr('Password Required');
+        isReq = false;
+      } else if (password.length < 6) {
+        setPasswordErr('Password must be at least 6 characters long');
+        isReq = false;
+      }
+      return isReq;
+    }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    props.onLoggedIn(username);
+    const isReq = validate();
+    if (isReq) 
+    // Send a request to server for authentication
+    axios
+      .post('https://movie-info-online.herokuapp.com/login', {
+        Username: username,
+        Password: password
+    })
+    .then(response => {
+      const data = response.data;
+      props.onLoggedIn(data);
+    })
+    .catch(e => {
+      console.log('no such user')
+    });
   };
 
   return (
@@ -56,4 +93,5 @@ LoginView.propTypes = {
     password: propTypes.string.isRequired,
   }),
   onLoggedIn: propTypes.func.isRequired,
+  setRegistered: propTypes.func.isRequired,
 };
