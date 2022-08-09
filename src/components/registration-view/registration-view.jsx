@@ -56,7 +56,7 @@ export function RegistrationView(props) {
     e.preventDefault();
     const isReq = validate();
     if(isReq){
-      axios.post('API_URL/users', {
+      axios.post('https://movie-info-online.herokuapp.com/users', {
         Username: username,
         Password: password,
         Email: email,

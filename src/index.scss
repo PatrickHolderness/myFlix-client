@@ -1,5 +1,14 @@
-$color: steelblue;
+html {
+    background-color: #000000;
+    font-size: 1.3rem;
+}
 
-.my-flix {
-  color: $color;
+.app-container {
+    background-color: #000000;
+    color: white;
+}
+
+.btn.btn-primary {
+    background-color: #aad1d9;
+    
 }

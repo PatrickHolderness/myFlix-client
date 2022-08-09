@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import Button from 'react-bootstrap';
 import Card from 'react-bootstrap';
 import './movie-card.scss';
 //display movies rendered on main-view
 
-export class MovieCard extends React.Component 
+export class MovieCard extends Component 
 {
   render() {
     const { movie, onMovieClick } = this.props;

@@ -1,97 +1,125 @@
 import React, { useState } from 'react';
-import axios from 'axios'
-import propTypes from "prop-types";
-import { Form, Button } from "react-bootstrap";
-
-import "./login-view.scss";
-
-//User login - requiring username and password
+import propTypes from 'prop-types';
+import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-//Hook for each input
-const [usernameErr, setUsernameErr] = useState('');
-const [passwordErr, setPasswordErr] = useState('');
 
-    // Validate user inputs
-    const validate = () => {
-      let isReq = true;
-      if (!username) {
-        setUsernameErr('Username Required');
-        isReq = false;
-      } else if (username.length < 2) {
-        setUsernameErr('Username must be at least 5 characters long');
-        isReq = false;
-      }
-      if (!password) {
-        setPasswordErr('Password Required');
-        isReq = false;
-      } else if (password.length < 6) {
-        setPasswordErr('Password must be at least 6 characters long');
-        isReq = false;
-      }
-      return isReq;
+  // Declare hook for each input error message (in case of invalid)
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+
+  // Validate user inputs
+  const validate = () => {
+    let isReq = true;
+    if (!username) {
+      setUsernameErr('Username is required.');
+      isReq = false;
+    } else if (username.length < 5) {
+      setUsernameErr('Username must be at least 6 characters long.');
+      isReq = false;
     }
+    if (!password) {
+      setPasswordErr('Password is required.');
+      isReq = false;
+    } else if (password.length < 6) {
+      setPasswordErr('Password must be at least 8 characters long.');
+      isReq = false;
+    }
+    return isReq;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const isReq = validate();
-    if (isReq) 
-    // Send a request to server for authentication
-    axios
-      .post('https://movie-info-online.herokuapp.com/login', {
-        Username: username,
-        Password: password
-    })
-    .then(response => {
-      const data = response.data;
-      props.onLoggedIn(data);
-    })
-    .catch(e => {
-      console.log('no such user')
-    });
+    if (isReq) {
+      /* Send a request to the server for authentication */
+      axios
+        .post('https://movie-info-online.herokuapp.com/login', {
+
+          username: username,
+          password: password,
+
+        })
+
+        .then((res) => {
+          const data = res.data;
+          props.onLoggedIn(data);
+        })
+        .catch((err) => {
+          console.log('No such user.')
+        });
+    }
   };
 
   return (
-    <Form>
-      <h2 className="mb-3 mx-auto mt-5">Log in</h2>
-      <Form.Group className="mb-3 mx-auto mt-3" controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          placeholder="Enter a username"
-        />
-      </Form.Group>
+    <Container className="mt-5">
+      <Row className="justify-content-sm-center">
+        <Col xs={10} sm={7} md={4} lg={6} xl={5}>
+          <Card variant="light" bg="dark">
+            <Card.Body>
+              <h1>Log In</h1>
+              <Form>
+                <Form.Group className="mt-4 mb-3">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
+                    placeholder="Enter your username"
+                  />
+                  {/* Code to Display username validation error */}
+                  {usernameErr && (
+                    <p className="validation-message">{usernameErr}</p>
+                  )}
+                </Form.Group>
 
-      <Form.Group className="mb-3 mx-auto mt-3">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          minLength="8"
-          placeholder=""
-        />
-      </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    placeholder="Enter your password"
+                  />
+                  {/* Code to Display password validation error */}
+                  {passwordErr && (
+                    <p className="validation-message">{passwordErr}</p>
+                  )}
+                </Form.Group>
 
-      <Button className="mt-4" type="submit" onClick={handleSubmit}>
-        Submit
-      </Button>
-    </Form>
+                <Button
+                  variant="primary"
+                  className="mt-3"
+                  type="submit"
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
+              </Form>
+            </Card.Body>
+
+            <Card.Footer>
+              <Link to="/register">
+                <Button className="ma-0 col-10 offset-1" variant="link">
+                  Not Registered? Sign Up
+                </Button>
+              </Link>
+            </Card.Footer>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
-
 }
 
 LoginView.propTypes = {
- user: propTypes.shape({
+  user: propTypes.shape({
     username: propTypes.string.isRequired,
-    password: propTypes.string.isRequired,
+    password: propTypes.string.isRequired
   }),
   onLoggedIn: propTypes.func.isRequired,
-  setRegistered: propTypes.func.isRequired,
 };
