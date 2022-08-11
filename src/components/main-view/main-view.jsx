@@ -97,15 +97,15 @@ componentDidMount()
 }
 
      //set state to current user
-  onLoggedIn(authData) {
+  onLoggedIn = (authData) => {
     // console.log(authData);
-    const { username, email, birthday, favoriteMovies } = authData.user;
-    this.setState({ username, favoriteMovies: favoriteMovies || [] });
+    const { Username, Email, Birthday, FavoriteMovies } = authData.user;
+    this.setState({ username: Username, favoriteMovies: FavoriteMovies || [] });
 
-    localStorage.setItem('token', authData.Token)
-    localStorage.setItem('username', username);
-    localStorage.setItem('email', email);
-    localStorage.setItem('birthday', birthday);
+    localStorage.setItem('token', authData.token)
+    localStorage.setItem('username', Username);
+    localStorage.setItem('email', Email);
+    localStorage.setItem('birthday', Birthday);
     this.getMovies(authData.token);
   };
 

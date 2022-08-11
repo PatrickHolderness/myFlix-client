@@ -40,8 +40,8 @@ export function LoginView(props) {
       axios
         .post('https://movie-info-online.herokuapp.com/login', {
 
-          username: username,
-          password: password,
+          Username: username,
+          Password: password,
 
         })
 

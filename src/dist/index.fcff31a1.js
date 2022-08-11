@@ -25500,19 +25500,19 @@ class MainView extends _reactDefault.default.Component {
         }
     }
     //set state to current user
-    onLoggedIn(authData) {
+    onLoggedIn = (authData)=>{
         // console.log(authData);
-        const { username , email , birthday , favoriteMovies  } = authData.user;
+        const { Username , Email , Birthday , FavoriteMovies  } = authData.user;
         this.setState({
-            username,
-            favoriteMovies: favoriteMovies || []
+            username: Username,
+            favoriteMovies: FavoriteMovies || []
         });
-        localStorage.setItem('token', authData.Token);
-        localStorage.setItem('username', username);
-        localStorage.setItem('email', email);
-        localStorage.setItem('birthday', birthday);
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('username', Username);
+        localStorage.setItem('email', Email);
+        localStorage.setItem('birthday', Birthday);
         this.getMovies(authData.token);
-    }
+    };
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
@@ -44397,8 +44397,8 @@ function LoginView(props) {
         e.preventDefault();
         const isReq = validate();
         if (isReq) /* Send a request to the server for authentication */ _axiosDefault.default.post('https://movie-info-online.herokuapp.com/login', {
-            username: username,
-            password: password
+            Username: username,
+            Password: password
         }).then((res)=>{
             const data = res.data;
             props.onLoggedIn(data);
