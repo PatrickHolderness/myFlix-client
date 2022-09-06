@@ -2,7 +2,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 
 import { ProfileView } from '../profile-view/profile-view';
 import { LoginView } from '../login-view/login-view';
@@ -128,7 +128,8 @@ componentDidMount()
         <NavBar user={username} />
         <Container fluid>
           <Row className="main-view justify-content-md-center">
-            <Route
+    
+              <Route
               exact
               path="/"
               render={() => {
@@ -147,7 +148,8 @@ componentDidMount()
                 ));
               }}
             />
-            <Route
+          
+                <Route
               path="/register"
               render={() => {
                 if (username) return <Redirect to="/" />;
@@ -157,6 +159,7 @@ componentDidMount()
                 );
               }}
             />
+          
             <Route
               path="/movies/:movieId"
               render={({ match, history }) => {             
@@ -170,6 +173,7 @@ componentDidMount()
                 );
               }}
             />
+         
             <Route
               path="/directors/:directorName"
               render={({ match, history }) => {
@@ -183,11 +187,12 @@ componentDidMount()
                       }
                       onBackClick={() => history.goBack()}
                     />
+                    
                 );
               }}
             />
-
-            <Route
+          
+             <Route
               path="/genres/:genreName"
               render={({ match, history }) => {
                 if (movies.length === 0)
@@ -207,7 +212,7 @@ componentDidMount()
                 );
               }}
             />
-              <Route
+             <Route
             path={"/users/$username"}
             render={({ history }) => {
               if (!username) return <Redirect to="/" />;
@@ -222,8 +227,7 @@ componentDidMount()
               );
             }}
           />
-
-            <Route
+             <Route
               path={`/users/user-update/${username}`}
               render={({ history }) => {
                 if (!user) return <Redirect to="/" />;
@@ -237,9 +241,12 @@ componentDidMount()
                 );
               }}
             />
+          
           </Row>
         </Container>
       </Router>
     );
   }
 }
+
+

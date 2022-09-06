@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import Button from 'react-bootstrap';
-import Card from 'react-bootstrap';
+import {Button, Card, Col, Row, Container } from 'react-bootstrap';
 import './movie-card.scss';
 //display movies rendered on main-view
 
