@@ -126,8 +126,8 @@ componentDidMount()
     return (
       <Router>
         <NavBar user={username} />
-        <Container fluid>
-          <Row className="main-view justify-content-md-center">
+        <Container>
+          <Row className="main-view">
             <Route
               exact
               path="/"
@@ -141,7 +141,7 @@ componentDidMount()
                 if (movies.length === 0) return <div className="main-view" />;
 
                 return movies.map((m) => (
-                  <Col md={3} key={m._id}>
+                  <Col md={4} key={m._id}>
                     <MovieCard movie={m} />
                   </Col>
                 ));
@@ -153,13 +153,13 @@ componentDidMount()
                 if (username) return <Redirect to="/" />;
                 return (
                     <RegistrationView />
-                  
+
                 );
               }}
             />
             <Route
               path="/movies/:movieId"
-              render={({ match, history }) => {             
+              render={({ match, history }) => {
                 return (
                     <MovieView
                       movie={movies.find((m) => m._id === match.params.movieId)}
