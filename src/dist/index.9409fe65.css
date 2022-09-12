@@ -1,4 +1,66 @@
-.my-flix {
-  color: steelblue;
+html {
+  background-color: #000000;
+  font-size: 1.3rem;
 }
+
+.app-container {
+  background-color: #000000;
+  color: white;
+}
+
+.btn.btn-primary {
+  background-color: #aad1d9;
+}
+
+.card-body {
+  background-color: #ffffff;
+  padding-top: 510px;
+}
+
+.btn.btn-link {
+  color: #979dc1;
+  font-weight: 500;
+  float: left;
+}
+
+.fav-movie {
+  margin-bottom: 15px;
+}
+.fav-movie figure {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: auto;
+  width: 100%;
+}
+.fav-movie figure img {
+  display: block;
+  height: 400px;
+  margin: auto;
+}
+.fav-movie figure figcaption {
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 150px;
+}
+.movie-poster {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.main-nav {
+  padding: 0px;
+  margin-bottom: 60px;
+}
+
+.nav-link {
+  color: white;
+}
+
+
+
 /*# sourceMappingURL=index.9409fe65.css.map */
