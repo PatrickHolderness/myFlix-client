@@ -1,0 +1,78 @@
+
+
+.card-body {
+  background-color: #fff;
+  padding-top: 510px;
+}
+
+.btn.btn-link {
+  color: #979dc1;
+  float: left;
+  font-weight: 500;
+}
+
+.fav-movie {
+  margin-bottom: 15px;
+}
+
+.fav-movie figure {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.fav-movie figure img {
+  height: 400px;
+  margin: auto;
+  display: block;
+}
+
+.fav-movie figure figcaption {
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 150px;
+}
+
+.movie-poster {
+  justify-content: center;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+
+
+.main-nav {
+  margin-bottom: 60px;
+  padding: 0;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+
+
+
+
+
+
+html {
+  background-color: #000;
+  font-size: 1.3rem;
+}
+
+.app-container {
+  color: #fff;
+  background-color: #000;
+}
+
+.btn.btn-primary {
+  background-color: #aad1d9;
+}
+
+/*# sourceMappingURL=index.83325510.css.map */
