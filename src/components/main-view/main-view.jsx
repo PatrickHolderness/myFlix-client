@@ -2,7 +2,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Routes, Route, Redirect } from 'react-router-dom';
 
 import { ProfileView } from '../profile-view/profile-view';
 import { LoginView } from '../login-view/login-view';
@@ -124,7 +124,7 @@ componentDidMount()
         );
 
     return (
-      <Router>
+      <Routes>
         <NavBar user={username} />
         <Container>
           <Row className="main-view">
@@ -239,7 +239,7 @@ componentDidMount()
             />
           </Row>
         </Container>
-      </Router>
+      </Routes>
     );
   }
 }

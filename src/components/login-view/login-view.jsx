@@ -31,7 +31,7 @@ export function LoginView(props) {
     }
     return isReq;
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const isReq = validate();
@@ -46,15 +46,15 @@ export function LoginView(props) {
         })
 
         .then((res) => {
+          console.log(res)
           const data = res.data;
           props.onLoggedIn(data);
         })
         .catch((err) => {
-          console.log('No such user.')
+          console.log("error.response.data")
         });
     }
   };
-
   return (
     <Container className="mt-5">
       <Row className="justify-content-sm-center">
