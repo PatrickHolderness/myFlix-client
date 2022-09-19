@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser, addFavorite, deleteFavorite,
+} from '../../actions/actions';
+
 import MoviesList from '../movies-list/movies-list';
 import { ProfileView } from '../profile-view/profile-view';
 import { LoginView } from '../login-view/login-view';
@@ -37,11 +39,10 @@ class MainView extends React.Component {
 }
 getMovies(token) {
   axios.get('https://movie-info-online.herokuapp.com/movies', {
-    headers: { Authorization: `Bearer ${token}` }
+    headers: { Authorization: `Bearer ${token}` },
   })
   .then(response => {
 
-  
     this.props.setMovies(response.data);
   })
   .catch(function (error) {
@@ -106,6 +107,8 @@ handleFavorite = (movieId, action) => {
     render() {
       let { movies } = this.props;
       let { username } = this.state;
+      let { favoriteMovies } = this.state;
+
         if (!movies)
         return (  <div className="main-view">Loading...</div>
         );

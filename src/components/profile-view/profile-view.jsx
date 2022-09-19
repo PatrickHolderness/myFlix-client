@@ -2,23 +2,72 @@ import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { SET_USERS, updateUser, deleteUser } from "../../actions/actions";
 
 import "./profile-view.scss";
 
 import { Container, Col, Row, Button, Card, Form } from "react-bootstrap";
+import { connect } from 'react-redux';
 
-export function ProfileView(props) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [favoriteMovies, setFavoriteMovies] = useState({});
-  const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+ function ProfileView(props) {
+  const { handleFavorite, goBack, movies, updateUser, user } = props;
+  const { username, email, birthday, favoriteMovies } = user;
+  
+  const handleUpdateUser = (updatedUser, token) => {
+    console.log('Updated user from handleUpdateUser: ', updatedUser);
+    const { username } = updatedUser;
+    if (username && updatedUser && token) {
+      // Update user data in webserver
+      axios
+        .put(
+          `https://top-flix.herokuapp.com/users/${username}`,
+          { ...updatedUser },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((response) => {
+          const data = response.data;
+          console.log('response data from axios in handleUpdateUser: ', data);
+          // Dispatch action to update store.user
+          updateUser({ ...updatedUser, favoriteMovies });
+          console.log('after updatUser action, user: ', user);
+          alert(
+            'User info updated. Please Login again with your new credentials.'
+          );
+          window.open(`/`, '_self');
+        })
+        .catch((err) => {
+          console.log('error updating the user:', err);
+        });
+    }
+  };
 
-  const [user, setUserData] = useState("");
-  const [movies, setMovies] = useState([]);
-  const User = localStorage.getItem("user");
-  const token = localStorage.getItem("token");
-  const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
+  const handleDeleteUser = () => {
+    const accessToken = localStorage.getItem('token');
+    if (username && accessToken) {
+      let sure = confirm(
+        'Are you sure? This action is irreversible and will ERASE your account.'
+      );
+      if (!sure) return;
+      // request to Delete user from webserver
+      axios
+        .delete(`https://top-flix.herokuapp.com/users/${email}`, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        })
+        .then((res) => {
+          // Clear Token from local storage
+          localStorage.clear();
+          alert('Your user account was deleted.');
+          deleteUser({});
+          window.open('/', '_self');
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   const getUserData = () => {
     let user = localStorage.getItem("user");
@@ -157,11 +206,14 @@ export function ProfileView(props) {
   );
 }
 
-ProfileView.propTypes = {
-  profileView: propTypes.shape({
-    Username: propTypes.string.isRequired,
-    Password: propTypes.string.isRequired,
-    Email: propTypes.string.isRequired,
-    Birthday: propTypes.string,
-  }),
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    username: state.user,
+  };
 };
+
+export default connect(mapStateToProps, { deleteUser, updateUser })(
+  ProfileView
+);
