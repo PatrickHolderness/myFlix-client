@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
-import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
+import MoviesList from '../movies-list/movies-list';
 import { ProfileView } from '../profile-view/profile-view';
 import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
+
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { NavBar } from '../nav-bar/nav-bar';
@@ -12,7 +14,8 @@ import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { Row, Col, Container } from 'react-bootstrap';
 import './main-view.scss';
-export default class MainView extends React.Component {
+
+class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -36,15 +39,14 @@ getMovies(token) {
   axios.get('https://movie-info-online.herokuapp.com/movies', {
     headers: { Authorization: `Bearer ${token}` }
   })
-    .then(response => {
-      // Assign the result to the state
-      this.setState({
-        movies: response.data
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  .then(response => {
+
+  
+    this.props.setMovies(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 handleFavorite = (movieId, action) => {
   const { username, favoriteMovies } = this.state;
@@ -102,7 +104,8 @@ handleFavorite = (movieId, action) => {
   };
 
     render() {
-        const { movies, username, favoriteMovies } = this.state;
+      let { movies } = this.props;
+      let { username } = this.state;
         if (!movies)
         return (  <div className="main-view">Loading...</div>
         );
@@ -111,23 +114,14 @@ handleFavorite = (movieId, action) => {
         <NavBar user={username} />
         <Container fluid>
           <Row className="main-view justify-content-md-center">
-          <Route
-              exact
-              path="/"
-              render={() => {
-                // If no user, loginview is rendered. If a user is logged in, user details are passed as a prop to the loginview.
-                if (!username) {
-                  return <LoginView onLoggedIn={this.onLoggedIn} />;
-                }
-                // Before movies loaded
-                if (movies.length === 0) return <div className="main-view" />;
-                return movies.map((m) => (
-                  <Col md={3} key={m._id}>
-                    <MovieCard movie={m} />
-                  </Col>
-                ));
-              }}
-            />
+          <Route exact path="/" render={() => {
+            if (!username) return <Col>
+              <LoginView onLoggedIn={username => this.onLoggedIn(username)} />
+            </Col>
+            if (movies.length === 0) return <div className="main-view" />;
+            // #6
+            return <MoviesList movies={movies}/>;
+          }} />
 
                 <Route
               path="/register"
@@ -193,19 +187,21 @@ handleFavorite = (movieId, action) => {
               }}
             />
              <Route
-            path={"/users/$username"}
+            path={`/users/${username}`}
             render={({ history }) => {
               if (!username) return <Redirect to="/" />;
               return (
-                <ProfileView
-                  movies={movies}
-                  onBackClick={() => history.goBack()}
-                  favoriteMovies={favoriteMovies || []}
-                  handleFavorite={this.handleFavorite}
-                />
+                <Col>
+                  <ProfileView
+                    user={username}
+                    movies={movies}
+                    onBackClick={() => history.goBack()}
+                  />
+                </Col>
               );
             }}
           />
+        
 
              <Route
               path={`/users/user-update/${username}`}
@@ -229,20 +225,9 @@ handleFavorite = (movieId, action) => {
   }
 }
 
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string.isRequired,
-      Death: PropTypes.string,
-    }),
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }),
-  }).isRequired,
-};
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+
+export default connect(mapStateToProps, { setMovies } )(MainView);

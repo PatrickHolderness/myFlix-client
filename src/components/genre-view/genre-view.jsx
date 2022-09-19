@@ -5,9 +5,9 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 
 import "./genre-view.scss";
 
-export class GenreView extends React.Component {
+ class GenreView extends React.Component {
   render() {
-    const { genre, onBackClick } = this.props;
+    const { genre, onBackClick, genreMovies } = this.props;
 
     return (
       <Container className="genre-view">
@@ -39,3 +39,5 @@ GenreView.propTypes = {
     Description: propTypes.string.isRequired,
   }).isRequired,
 };
+
+export default GenreView;
