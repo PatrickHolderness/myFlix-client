@@ -31,12 +31,13 @@ export function LoginView(props) {
     }
     return isReq;
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const isReq = validate();
     if (isReq) {
       /* Send a request to the server for authentication */
+      console.log (password, username)
       axios
         .post('https://movie-info-online.herokuapp.com/login', {
 
@@ -46,15 +47,15 @@ export function LoginView(props) {
         })
 
         .then((res) => {
-          console.log(res)
           const data = res.data;
           props.onLoggedIn(data);
         })
         .catch((err) => {
-          console.log("error.response.data")
+          console.log('No such user.')
         });
     }
   };
+
   return (
     <Container className="mt-5">
       <Row className="justify-content-sm-center">
