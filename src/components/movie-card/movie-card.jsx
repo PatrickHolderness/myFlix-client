@@ -1,34 +1,14 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import {Button, Card, }from 'react-bootstrap';
+import {Button, Card, Col, Row, Container } from 'react-bootstrap';
 import './movie-card.scss';
+import { Link } from "react-router-dom"
 //display movies rendered on main-view
 
-export class MovieCard extends Component {
-  addMovie(movie, user) {
-    const username = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-    console.log(movie);
-    console.log(token);
-
-    axios
-      .post(
-        `https://swagflix.herokuapp.com/users/${username}/movies/${movie._id}`,
-        {},
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-      .then((response) => {
-        this.setState({
-          user: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-  
+export class MovieCard extends Component 
+{
   render() {
-    const { movie, onMovieClick } = this.props;
+    const { movie } = this.props;
 
     return (
       <Card style={{color: 'black' }}>
@@ -39,9 +19,9 @@ export class MovieCard extends Component {
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={() => onMovieClick(movie)} variant="link">
-            Open
-          </Button>
+          <Link to={`/movies/${movie._id}`}>
+            <Button variant="link">Open</Button>
+          </Link>
         </Card.Body>
       </Card>
     );
@@ -56,7 +36,6 @@ MovieCard.propTypes = {
       Name: propTypes.string.isRequired,
       Description: propTypes.string.isRequired,
     }),
+    ImagePath: propTypes.string.isRequired,
   }).isRequired,
-
-  onMovieClick: propTypes.func.isRequired,
 };
