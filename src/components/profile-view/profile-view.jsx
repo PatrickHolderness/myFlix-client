@@ -16,12 +16,10 @@ export function ProfileView(props) {
 
   const [user, setUserData] = useState("");
   const [movies, setMovies] = useState([]);
-  const User = localStorage.getItem("user");
-  const token = localStorage.getItem("token");
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
   const getUserData = () => {
-    let user = localStorage.getItem("user");
+    let user = localStorage.getItem("username");
     let token = localStorage.getItem("token");
     axios
       .get(`https://movie-info-online.herokuapp.com/users/${user}`, {
@@ -46,7 +44,7 @@ export function ProfileView(props) {
 
   // Delete Profile
   const handleDelete = (e) => {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem("username");
     const token = localStorage.getItem("token");
     axios.delete(`https://movie-info-online.herokuapp.com/users/${user}`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -57,7 +55,7 @@ export function ProfileView(props) {
   };
   // Update Profile
   const handleUpdate = () => {
-    let user = localStorage.getItem("user");
+    let user = localStorage.getItem("username");
     let token = localStorage.getItem("token");
 
     axios
@@ -76,7 +74,7 @@ export function ProfileView(props) {
 
       .then((response) => {
         alert("Profile updated!");
-        localStorage.setItem("user", response.data.Username),
+        localStorage.setItem("username", response.data.Username),
           console.log(response.data);
         window.open("/", "_self");
       })

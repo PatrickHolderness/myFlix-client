@@ -162,7 +162,7 @@ handleFavorite = (movieId, action) => {
                     <DirectorView
                       director={
                         movies.find(
-                          (m) => m.director.Name === match.params.directorName
+                          (m) => m.Director.Name === match.params.directorName
                         ).Director
                       }
                       onBackClick={() => history.goBack()}
@@ -180,12 +180,12 @@ handleFavorite = (movieId, action) => {
                   return <div className="main-view"></div>;
                 return (
                   <GenreView
-                      genreMovies={movies.filter( (movie) => movie.genre.name === match.params.genreName)
+                      genreMovies={movies.filter( (movie) => movie.Genre.Name === match.params.genreName)
                       }
                       genre={
                         movies.find(
-                          (movie) => movie.genre.name === match.params.genreName
-                        ).genre
+                          (movie) => movie.Genre.Name === match.params.genreName
+                        ).Genre
                       }
                       onBackClick={() => history.goBack()}
                     />
@@ -195,7 +195,7 @@ handleFavorite = (movieId, action) => {
              <Route
             path={"/users/$username"}
             render={({ history }) => {
-              if (!username) return <Redirect to="/" />;
+              if (!user) return <Redirect to="/" />;
               return (
                 <ProfileView
                   movies={movies}
