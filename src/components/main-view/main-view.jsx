@@ -193,8 +193,9 @@ handleFavorite = (movieId, action) => {
               }}
             />
              <Route
-            path={"/users/$username"}
+            path={"/users/:username"}
             render={({ history }) => {
+              let user = localStorage.getItem('username');
               if (!user) return <Redirect to="/" />;
               return (
                 <ProfileView
