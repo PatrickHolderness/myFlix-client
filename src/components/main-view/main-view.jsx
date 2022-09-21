@@ -233,4 +233,4 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);

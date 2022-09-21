@@ -29,7 +29,8 @@
     "react-router": "^6.4.0",
     "react-router-dom": "^5.3.0",
     "react-router-redux": "^5.0.0-alpha.9",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
