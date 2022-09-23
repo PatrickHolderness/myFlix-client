@@ -21,7 +21,6 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
       username: null,
       favoriteMovies: [],
     };
@@ -190,18 +189,10 @@ handleFavorite = (movieId, action) => {
               }}
             />
              <Route
-            path={`/users/${username}`}
-            render={({ history }) => {
+            path={"/users/:Username"}
+            render={({ history, match }) => {
               if (!username) return <Redirect to="/" />;
-              return (
-                <Col>
-                  <ProfileView
-                    user={username}
-                    movies={movies}
-                    onBackClick={() => history.goBack()}
-                  />
-                </Col>
-              );
+              return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
             }}
           />
         
