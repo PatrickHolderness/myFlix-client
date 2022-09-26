@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import './movie-view.scss';
 
 
- class MovieView extends React.Component {
+ export class MovieView extends React.Component {
   constructor() {
     super();
 
@@ -61,7 +61,7 @@ import './movie-view.scss';
 
   render() {
     const { movie, user, onBackClick } = this.props;
-    if (!movie) return <div></div>;
+
 
     return (
       <div className="movie-view">
