@@ -192,7 +192,15 @@ handleFavorite = (movieId, action) => {
             path={"/users/:Username"}
             render={({ history, match }) => {
               if (!username) return <Redirect to="/" />;
-              return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+              if (movies.length === 0)
+                  return <div className="main-view"></div>;
+              return <Col>
+              <ProfileView
+                movies={movies}
+                user={user}
+                onBackClick={() => history.goBack()}
+              />
+            </Col> 
             }}
           />
         
