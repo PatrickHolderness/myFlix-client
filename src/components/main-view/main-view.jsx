@@ -20,10 +20,10 @@ import './main-view.scss';
  class MainView extends React.Component {
   constructor(props) {
      super(props);
-    //   this.state = {
+      this.state = {
     //          username: null,
-    //          favoriteMovies: [],
-    // };
+             favoriteMovies: [],
+    };
   }
 
    componentDidMount()
