@@ -18,12 +18,12 @@ import { Row, Col, Container } from 'react-bootstrap';
 import './main-view.scss';
 
  class MainView extends React.Component {
-  constructor() {
-     super();
-      this.state = {
-             username: null,
-             favoriteMovies: [],
-    };
+  constructor(props) {
+     super(props);
+    //   this.state = {
+    //          username: null,
+    //          favoriteMovies: [],
+    // };
   }
 
    componentDidMount()
@@ -101,12 +101,15 @@ handleFavorite = (movieId, action) => {
     localStorage.setItem('email', Email);
     localStorage.setItem('birthday', Birthday);
     this.getMovies(authData.token);
+    this.props.setUser(authData.user);
   };
 
     render() {
       let { movies } = this.props;
+      // let { favoriteMovies } = this.state;
       let { username } = this.state;
       let { favoriteMovies } = this.state;
+
 
         if (!movies)
         return (  <div className="main-view">Loading...</div>
@@ -191,16 +194,13 @@ handleFavorite = (movieId, action) => {
              <Route
             path={"/users/:Username"}
             render={({ history, match }) => {
-              if (!username) return <Redirect to="/" />;
-              if (movies.length === 0)
-                  return <div className="main-view"></div>;
-              return <Col>
+              const {user} = this.props;
               <ProfileView
                 movies={movies}
                 user={user}
                 onBackClick={() => history.goBack()}
               />
-            </Col> 
+            // </Col> 
             }}
           />
         

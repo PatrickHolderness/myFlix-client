@@ -20,7 +20,7 @@ import { connect } from 'react-redux';
       // Update user data in webserver
       axios
         .put(
-          `https://top-flix.herokuapp.com/users/${username}`,
+          `https://movie-info-online.herokuapp.com/users/${username}`,
           { ...updatedUser },
           {
             headers: {
@@ -55,7 +55,7 @@ import { connect } from 'react-redux';
       if (!sure) return;
       // request to Delete user from webserver
       axios
-        .delete(`https://top-flix.herokuapp.com/users/${email}`, {
+        .delete(`https://movie-info-online.herokuapp.com/users/${email}`, {
           headers: { Authorization: `Bearer ${accessToken}` },
         })
         .then((res) => {
