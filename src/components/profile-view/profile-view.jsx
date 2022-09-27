@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { SET_USERS, updateUser, deleteUser } from "../../actions/actions";
+import { SET_USER, updateUser, deleteUser } from "../../actions/actions";
 
 import "./profile-view.scss";
 

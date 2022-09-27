@@ -17,12 +17,12 @@ import { DirectorView } from '../director-view/director-view';
 import { Row, Col, Container } from 'react-bootstrap';
 import './main-view.scss';
 
-class MainView extends React.Component {
+ class MainView extends React.Component {
   constructor() {
-    super();
-    this.state = {
-      username: null,
-      favoriteMovies: [],
+     super();
+      this.state = {
+             username: null,
+             favoriteMovies: [],
     };
   }
 
@@ -228,7 +228,7 @@ handleFavorite = (movieId, action) => {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return { movies: state.movies, user: state.user }
 }
 
 
