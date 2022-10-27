@@ -39643,11 +39643,8 @@ class MovieCard extends (0, _react.Component) {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                         variant: "top",
-                        crossOrigin: "anonymous",
                         src: movie.ImagePath,
-                        alt: movie.Title + " poster",
-                        height: 300,
-                        width: 200
+                        alt: movie.Title + " poster"
                     }, void 0, false, {
                         fileName: "public/src/components/movie-card/movie-card.jsx",
                         lineNumber: 15,
@@ -39659,7 +39656,7 @@ class MovieCard extends (0, _react.Component) {
                                 children: movie.Title
                             }, void 0, false, {
                                 fileName: "public/src/components/movie-card/movie-card.jsx",
-                                lineNumber: 25,
+                                lineNumber: 24,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
@@ -39667,7 +39664,7 @@ class MovieCard extends (0, _react.Component) {
                                 children: movie.Description
                             }, void 0, false, {
                                 fileName: "public/src/components/movie-card/movie-card.jsx",
-                                lineNumber: 26,
+                                lineNumber: 25,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -39677,18 +39674,18 @@ class MovieCard extends (0, _react.Component) {
                                     children: "Open"
                                 }, void 0, false, {
                                     fileName: "public/src/components/movie-card/movie-card.jsx",
-                                    lineNumber: 28,
+                                    lineNumber: 27,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "public/src/components/movie-card/movie-card.jsx",
-                                lineNumber: 27,
+                                lineNumber: 26,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "public/src/components/movie-card/movie-card.jsx",
-                        lineNumber: 24,
+                        lineNumber: 23,
                         columnNumber: 11
                     }, this)
                 ]
@@ -42837,10 +42834,8 @@ class MovieView extends (0, _react.Component) {
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                                         variant: "top",
-                                        crossOrigin: "anonymous",
                                         src: movie.ImagePath,
-                                        alt: movie.Title + " poster",
-                                        height: 500
+                                        alt: movie.Title + " poster"
                                     }, void 0, false, {
                                         fileName: "public/src/components/movie-view/movie-view.jsx",
                                         lineNumber: 36,
@@ -42852,7 +42847,7 @@ class MovieView extends (0, _react.Component) {
                                                 children: movie.Title
                                             }, void 0, false, {
                                                 fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 44,
+                                                lineNumber: 43,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Subtitle, {
@@ -42866,18 +42861,18 @@ class MovieView extends (0, _react.Component) {
                                                             children: movie.Genre.Name
                                                         }, void 0, false, {
                                                             fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                            lineNumber: 48,
+                                                            lineNumber: 47,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                        lineNumber: 47,
+                                                        lineNumber: 46,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 45,
+                                                lineNumber: 44,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Subtitle, {
@@ -42891,37 +42886,37 @@ class MovieView extends (0, _react.Component) {
                                                             children: movie.Director.Name
                                                         }, void 0, false, {
                                                             fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                            lineNumber: 59,
+                                                            lineNumber: 58,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                        lineNumber: 58,
+                                                        lineNumber: 57,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 56,
+                                                lineNumber: 55,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                                 fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 67,
+                                                lineNumber: 66,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Subtitle, {
                                                 children: "Description:"
                                             }, void 0, false, {
                                                 fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 68,
+                                                lineNumber: 67,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                                                 children: movie.Description
                                             }, void 0, false, {
                                                 fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 69,
+                                                lineNumber: 68,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -42933,7 +42928,7 @@ class MovieView extends (0, _react.Component) {
                                                 children: "Back"
                                             }, void 0, false, {
                                                 fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 70,
+                                                lineNumber: 69,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -42945,13 +42940,13 @@ class MovieView extends (0, _react.Component) {
                                                 children: "Add to Favorite"
                                             }, void 0, false, {
                                                 fileName: "public/src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 79,
+                                                lineNumber: 78,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "public/src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 43,
+                                        lineNumber: 42,
                                         columnNumber: 19
                                     }, this)
                                 ]
@@ -43861,10 +43856,7 @@ function FavoriteMoviesView({ favoriteMovies , token , movies , currentUser  }) 
                                 variant: "top",
                                 src: movie.ImagePath,
                                 alt: movie.Title + " poster",
-                                className: "position-relative overflow-hidden m-auto w-100",
-                                // height={300}
-                                // width={200}
-                                crossOrigin: "true"
+                                className: "position-relative overflow-hidden m-auto w-100"
                             }, void 0, false, {
                                 fileName: "public/src/components/profile-view/favorite-movies-view.jsx",
                                 lineNumber: 51,

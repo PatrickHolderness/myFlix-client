@@ -35,10 +35,9 @@ export class MovieView extends Component {
                 <Card className="m-3">
                   <Card.Img
                     variant="top"
-                    crossOrigin="anonymous"
                     src={movie.ImagePath}
                     alt={movie.Title + ' poster'}
-                    height={500}
+                    // height={500}
                   />
                   <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>

@@ -55,7 +55,7 @@ export function FavoriteMoviesView({
                     className="position-relative overflow-hidden m-auto w-100"
                     // height={300}
                     // width={200}
-                    crossOrigin="true"
+                    // crossOrigin="true"
                   />
                   <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
