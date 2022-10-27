@@ -14,11 +14,12 @@ export class MovieCard extends Component {
         <Card>
           <Card.Img
             variant="top"
+            crossOrigin="anonymous"
             src={movie.ImagePath}
             alt={movie.Title + ' poster'}
             height={300}
             width={200}
-            crossOrigin="true"
+            
           />
           <Card.Body>
             <Card.Title>{movie.Title}</Card.Title>
