@@ -20,7 +20,7 @@ export function ProfileView(props) {
   //GET user
   const getUser = () => {
     axios
-      .get(`https://lee-movies.herokuapp.com/users/${currentUser}`, {
+      .get(`https://movie-info-online.herokuapp.com/users/${currentUser}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
@@ -43,7 +43,7 @@ export function ProfileView(props) {
 
   const handleDelete = () => {
     axios
-      .delete(`https://lee-movies.herokuapp.com/users/${currentUser}`, {
+      .delete(`https://movie-info-online.herokuapp.com/users/${currentUser}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
