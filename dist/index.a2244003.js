@@ -39643,11 +39643,11 @@ class MovieCard extends (0, _react.Component) {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                         variant: "top",
+                        crossOrigin: "anonymous",
                         src: movie.ImagePath,
                         alt: movie.Title + " poster",
                         height: 300,
-                        width: 200,
-                        crossOrigin: "true"
+                        width: 200
                     }, void 0, false, {
                         fileName: "public/src/components/movie-card/movie-card.jsx",
                         lineNumber: 15,
@@ -39659,7 +39659,7 @@ class MovieCard extends (0, _react.Component) {
                                 children: movie.Title
                             }, void 0, false, {
                                 fileName: "public/src/components/movie-card/movie-card.jsx",
-                                lineNumber: 24,
+                                lineNumber: 25,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
@@ -39667,7 +39667,7 @@ class MovieCard extends (0, _react.Component) {
                                 children: movie.Description
                             }, void 0, false, {
                                 fileName: "public/src/components/movie-card/movie-card.jsx",
-                                lineNumber: 25,
+                                lineNumber: 26,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -39677,18 +39677,18 @@ class MovieCard extends (0, _react.Component) {
                                     children: "Open"
                                 }, void 0, false, {
                                     fileName: "public/src/components/movie-card/movie-card.jsx",
-                                    lineNumber: 27,
+                                    lineNumber: 28,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "public/src/components/movie-card/movie-card.jsx",
-                                lineNumber: 26,
+                                lineNumber: 27,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "public/src/components/movie-card/movie-card.jsx",
-                        lineNumber: 23,
+                        lineNumber: 24,
                         columnNumber: 11
                     }, this)
                 ]
@@ -42778,7 +42778,7 @@ function RegistrationView(props) {
         columnNumber: 5
     }, this);
 }
-_s(RegistrationView, "2YXlb0txzeZRPAx0CDxQ8AB5nsw=");
+_s(RegistrationView, "vu5Ea8ID+ed/4ZW3Bu23yZIT9dQ=");
 _c = RegistrationView;
 var _c;
 $RefreshReg$(_c, "RegistrationView");
@@ -43277,7 +43277,7 @@ function ProfileView(props) {
     const token = localStorage.getItem("token");
     //GET user
     const getUser = ()=>{
-        (0, _axiosDefault.default).get(`https://lee-movies.herokuapp.com/users/${currentUser}`, {
+        (0, _axiosDefault.default).get(`https://movie-info-online.herokuapp.com/users/${currentUser}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -43297,7 +43297,7 @@ function ProfileView(props) {
         getUser();
     }, []);
     const handleDelete = ()=>{
-        (0, _axiosDefault.default).delete(`https://lee-movies.herokuapp.com/users/${currentUser}`, {
+        (0, _axiosDefault.default).delete(`https://movie-info-online.herokuapp.com/users/${currentUser}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -43579,7 +43579,7 @@ function UpdateView({ user , token  }) {
         console.log(username, password, email, birthday);
         const isReq = validate();
         if (isReq) // const token = localStorage.getItem('token');
-        (0, _axiosDefault.default).put(`https://lee-movies.herokuapp.com/users/${user.Username}`, {
+        (0, _axiosDefault.default).put(`https://movie-info-online.herokuapp.com/users/${user.Username}`, {
             Username: username,
             Password: password,
             Email: email,
@@ -43795,7 +43795,7 @@ function UpdateView({ user , token  }) {
         }, this)
     }, void 0, false);
 }
-_s(UpdateView, "2YXlb0txzeZRPAx0CDxQ8AB5nsw=");
+_s(UpdateView, "vu5Ea8ID+ed/4ZW3Bu23yZIT9dQ=");
 _c = UpdateView;
 var _c;
 $RefreshReg$(_c, "UpdateView");

@@ -60,7 +60,7 @@ export function UpdateView({ user, token }) {
       // const token = localStorage.getItem('token');
       axios
         .put(
-          `https://lee-movies.herokuapp.com/users/${user.Username}`,
+          `https://movie-info-online.herokuapp.com/users/${user.Username}`,
           {
             Username: username,
             Password: password,
