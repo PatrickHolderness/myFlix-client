@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leevee6039/myFlix-client.git"
+    "url": "git+https://github.com/patrickholderness/myFlix-client.git"
   },
-  "author": "Leela Miriyala",
+  "author": "Patrick Holderness",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leevee6039/myFlix-client/issues"
+    "url": "https://github.com/patrickholderness/myFlix-client/issues"
   },
-  "homepage": "https://github.com/leevee6039/myFlix-client#readme",
+  "homepage": "https://github.com/patrickholderness/myFlix-client#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "parcel": "^2.0.0-rc.0",
