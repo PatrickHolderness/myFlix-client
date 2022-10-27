@@ -1,39 +1,36 @@
 {
   "name": "myflix-client",
   "version": "1.0.0",
-  "description": "",
-  "default": "src/index.html",
+  "description": "Using React, build the client-side for an application called myFlix based on its existing server-side code (REST API and database).",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.html --open --no-cache"
+    "start": "parcel public/index.html",
+    "build": "parcel build public/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PatrickHolderness/myFlix-client.git"
+    "url": "git+https://github.com/leevee6039/myFlix-client.git"
   },
-  "author": "",
+  "author": "Leela Miriyala",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PatrickHolderness/myFlix-client/issues"
+    "url": "https://github.com/leevee6039/myFlix-client/issues"
   },
-  "homepage": "https://github.com/PatrickHolderness/myFlix-client#readme",
+  "homepage": "https://github.com/leevee6039/myFlix-client#readme",
   "dependencies": {
     "axios": "^0.27.2",
-    "bootstrap": "^5.2.1",
-    "parcel": "^2.7.0",
+    "parcel": "^2.0.0-rc.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.5.0",
+    "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
-    "react-router": "^6.4.0",
     "react-router-dom": "^5.3.0",
-    "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.7.0",
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
     "buffer": "^6.0.3",
     "process": "^0.11.10"
   }
