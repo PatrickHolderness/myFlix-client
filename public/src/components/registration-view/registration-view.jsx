@@ -72,7 +72,7 @@ export function RegistrationView(props) {
           const data = response.data;
           // props.onRegistration(data);
           console.log(data);
-          alert('Registration succesful, please login');
+          alert('Registration successful, please log in');
           window.open('/', '_self'); // the second argument '_self' opens the page in the current tab
         })
         .catch((error) => {
