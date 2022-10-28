@@ -33,7 +33,7 @@ export function RegistrationView(props) {
     } else if (username.length < 2) {
       setFieldErrors({
         ...fieldErrors,
-        usernameErr: 'Username must be 2 characters long'
+        usernameErr: 'Username must be at least 2 characters long'
       });
       isReq = false;
     } else if (!password) {
@@ -42,7 +42,7 @@ export function RegistrationView(props) {
     } else if (password.length < 6) {
       setFieldErrors({
         ...fieldErrors,
-        passwordErr: 'Password must be 6 characters long'
+        passwordErr: 'Password must be at least 6 characters long'
       });
       isReq = false;
     } else if (!email) {
@@ -73,15 +73,12 @@ export function RegistrationView(props) {
           // props.onRegistration(data);
           console.log(data);
           alert('Registration succesful, please login');
-          window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+          window.open('/', '_self'); // the second argument '_self' opens the page in the current tab
         })
         .catch((error) => {
           console.error(error, ' Registration failed');
         });
     }
-    /** Send a request to the server for authentication */
-    /** then call props.onRegistration(username) */
-    // props.onRegistration(username);
   };
   return (
     <Container className="mt-5 mb-5">
@@ -160,7 +157,7 @@ export function RegistrationView(props) {
                     Register
                   </Button>
                   <Card.Text className="mt-2">
-                    Already Registered? <Link to={`/`}>Sign-in Here</Link>
+                    Already Registered? <Link to={`/`}>Sign in Here</Link>
                   </Card.Text>
                 </Form>
               </Card.Body>
