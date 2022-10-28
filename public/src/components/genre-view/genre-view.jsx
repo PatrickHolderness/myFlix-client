@@ -25,7 +25,7 @@ export function GenreView({ genre, onBackClick }) {
               onClick={() => {
                 onBackClick();
               }}
-              varient="secondary"
+              variant="secondary"
             >
               Back
             </Button>
