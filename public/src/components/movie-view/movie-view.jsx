@@ -5,7 +5,7 @@ import { Button, Card, CardGroup, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export class MovieView extends Component {
-  //PUT add movie to favorite movie list
+  //PUT add movie to favs
   handleAddMovieToFav(movieId) {
     const currentUser = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -18,7 +18,7 @@ export class MovieView extends Component {
       .then((response) => {
         const data = response.data;
         console.log(data);
-        alert(`The movie was successfully to favorite's list`);
+        alert(`The movie was successfully added to favorite's list`);
         // window.open(`/movies/${movieId}`, '_self');
       })
       .catch((error) => console.error(error));
