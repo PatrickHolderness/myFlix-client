@@ -1,10 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
-// redux import
 import { connect } from 'react-redux';
-
-// actions import
 import { setMovies, setUser } from '../../actions/actions';
 
 import MoviesList from '../movies-list/movies-list';
@@ -61,7 +57,7 @@ class MainView extends React.Component {
       });
   }
 
-  /** When a user succesfully logs in, this function updates the`user` property in state to that particular user*/
+  /** update `user` property in state to current user on successful login*/
   onLoggedIn(authData) {
     console.log('authData-->', authData);
     this.props.setUser(authData.user.Username);
