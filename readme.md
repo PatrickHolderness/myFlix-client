@@ -4,7 +4,7 @@
 
 A React project using hooks, react-redux for state management, react-bootstrap for styling and react-router for routing.
 
-![myFlix_Image(public/src/assets/myflix-screenshot.jpeg)
+![myflix-screenshot](https://user-images.githubusercontent.com/104070642/200290239-d68d11e5-028f-4e3a-8afc-88f8235afb06.png)
 
 
 ## Project dependencies 
@@ -42,13 +42,13 @@ A React project using hooks, react-redux for state management, react-bootstrap f
   To install myFLix, follow these steps.
   
   - Clone the repo 
-  `git clone https://github.com/patrickholderness/myflix-client.git
+  `git clone https://github.com/patrickholderness/myflix-client.git`
   
   - Install NPM packages
-  `npm install
+  `npm install`
   
   - Start the app 
-  `npm start in CLI
+  `"npm start" in CLI`
   
   # Usage
   
