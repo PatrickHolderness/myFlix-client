@@ -1,6 +1,6 @@
 # myFlix Client
 
-##### Using React to build the client-side for an application called myFlix, based on its existing server-side code (REST API and MongoDB). The application is a single-page application (SPA) and uses state routing to navigate between views and sharing URLs.[movie_api](https://github.com/patrickholderness/movie_api)
+##### Using React to build the client-side for an application called myFlix, based on its existing server-side code (REST API and MongoDB). The application is a single-page application (SPA) and uses state routing to navigate between views and sharing URLs. [movie_api](https://github.com/patrickholderness/movie_api)
 
 A React project using hooks, react-redux for state management, react-bootstrap for styling and react-router for routing.
 
@@ -53,5 +53,23 @@ A React project using hooks, react-redux for state management, react-bootstrap f
   # Usage
   
   Once the app opens, you will see a login page and a registration link. Register, then log in with your credentials.
+  
+  ## Contributions
+ 
+ Contributions and collaboration are an excellent way to learn and create new code. Any contributions to this project would be greatly appreciated!
+ If you have any suggestions to improve this project, please fork the repo and create a pull request. Open an issue with the tag **enhancement**. Thanks!
+ 
+ 1. Fork project
+ 2. Create your branch
+ 3. Commit changes
+ 4. Push to your branch
+ 5. Open a pull request.
+ 
+ ## Contact
+ 
+ Please feel free to contact me with any questions or advice. As a junior developer I am always open to helpful advice and learning new things. Feel free to get in touch!
+ 
+ - Patrick Holderness - patrickholderness@gmail.com
+ - Project Link - https://github.com/patrickholderness/myflix-client.git
   
   
